@@ -1,54 +1,47 @@
-# Astro Starter Kit: Basics
+# Astro Sample Project
+
+This is minimal reproduction of the issue with the astro project.
 
 ```sh
-npm create astro@latest -- --template basics
+# Initialize the project, with all options default
+bun --bun create astro
+# Add lightningcss
+bun add -D lightningcss
+# (edit astro.config.mjs to use lightningcss)
+# Launch the dev server
+RUST_BACKTRACE=full bun --bun run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
 ```
+> RUST_BACKTRACE=full bun --bun run dev
+13:42:27 [types] Generated 1ms
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+ astro  v4.15.4 ready in 74 ms
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+13:42:27 watching for file changes...
+thread '<unnamed>' panicked at napi/src/threadsafe_function.rs:235:57:
+called `Result::unwrap()` on an `Err` value: Error { status: InvalidArg, reason: "expect Function, got: Object", maybe_raw: 0x0 }
+stack backtrace:
+   0:      0x98379637713 - <unknown>
+   1:      0x98378e47ad0 - <unknown>
+   2:      0x9837960b722 - <unknown>
+   3:      0x983796391ee - <unknown>
+   4:      0x98379638970 - <unknown>
+   5:      0x98379639b37 - <unknown>
+   6:      0x98379639540 - <unknown>
+   7:      0x98379639496 - <unknown>
+   8:      0x9837963948f - <unknown>
+   9:      0x98378e29414 - <unknown>
+  10:      0x98378e298c2 - <unknown>
+  11:      0x983795e2dbe - <unknown>
+  12:          0x3330fbc - <unknown>
+  13:          0x332e94c - <unknown>
+  14:          0x2f0fe3a - <unknown>
+  15:          0x2e22c15 - <unknown>
+  16:          0x3dd9bab - <unknown>
+error: script "dev" was terminated by signal SIGABRT (Abort)
+zsh: IOT instruction (core dumped)  RUST_BACKTRACE=full bun --bun run dev
+```
